@@ -78,15 +78,20 @@ export const createNote = async (noteData: CreateNoteParams): Promise<Note> => {
 
 // details
 
-export const fetchNoteById = async (id: string) => {
-  const response = await axios.get(`${API_URL}/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  })
-  if(!response) {
-     throw new Error("Failed to fetch note details");
-  }
-  return response.data
-}
 
+export const fetchNoteById = async (id: string): Promise<Note> => {
+  try {
+    const response = await axios.get<Note>(`${API_URL}/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error(`Помилка при отриманні нотатки з id ${id}:`, error);
+    throw new Error("Failed to fetch note details");
+  }
+
+  
+};
