@@ -29,7 +29,7 @@ const NotesClient = () => {
     setPage(1);
   };
 
-  const { data, isError, isLoading } = useQuery<FetchNotesResponse, Error>({
+  const { data, isError, isLoading, error, refetch } = useQuery<FetchNotesResponse, Error>({
     queryKey: ["notes", page, debouncedSearch],
     queryFn: () => fetchNotes(page, debouncedSearch, 12),
     placeholderData: keepPreviousData,
@@ -53,7 +53,10 @@ const NotesClient = () => {
       </header>
 
       {isLoading && <Loader />}
-      {isError && <ErrorMessage  message="Помилка при завантаженні нотаток"/>}
+      {isError && <ErrorMessage  
+        message="Помилка при завантаженні нотаток"
+        error={error || new Error("Unknown error")} 
+        reset={refetch}/>}
       {!isLoading && notes.length === 0 && <EmptyState />}
       {notes.length > 0 && <NoteList data={notes} />}
 
