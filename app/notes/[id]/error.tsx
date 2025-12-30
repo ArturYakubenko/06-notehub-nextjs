@@ -7,3 +7,5 @@ const ErrorMessage = ({ message }: ErrorProps) => {
         <p>Could not fetch the list of notes. {message}</p>
     );
 };
+
+export default ErrorMessage
