@@ -29,7 +29,7 @@ const NoteList: FC<NoteListProps> = ({ data }) => {
           <p className={css.content}>{item.content || 'No content'}</p>
           <div className={css.footer}>
             <span className={css.tag}>{item.tag}</span>
-            <button className={css.buttonDetails}  onClick={() => <Link href={`/notes/${item.id}`}></Link>}>View details</button>
+            <Link href={`/notes/${item.id}`} className={css.buttonDetails}>View details </Link>
             <button
               className={css.button}
               disabled={mutation.isPending}
