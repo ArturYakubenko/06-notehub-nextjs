@@ -3,7 +3,8 @@ import type { FC } from 'react';
 import type { Note } from '../../types/note';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteNote } from '@/lib/api';
-import { useRouter } from 'next/navigation'
+import Link from 'next/link';
+
 
 interface NoteListProps {
   data: Note[];
@@ -11,7 +12,7 @@ interface NoteListProps {
 
 const NoteList: FC<NoteListProps> = ({ data }) => {
   const queryClient = useQueryClient();
-  const router = useRouter()
+
 
   const mutation = useMutation({
     mutationFn: deleteNote,
@@ -28,7 +29,7 @@ const NoteList: FC<NoteListProps> = ({ data }) => {
           <p className={css.content}>{item.content || 'No content'}</p>
           <div className={css.footer}>
             <span className={css.tag}>{item.tag}</span>
-            <button className={css.buttonDetails}  onClick={() => router.push(`/notes/${item.id}`)}>View details</button>
+            <button className={css.buttonDetails}  onClick={() => <Link href={`/notes/${item.id}`}></Link>}>View details</button>
             <button
               className={css.button}
               disabled={mutation.isPending}
