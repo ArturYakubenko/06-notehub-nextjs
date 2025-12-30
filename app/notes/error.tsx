@@ -1,12 +1,19 @@
+
+
 "use client"
+
+
 interface ErrorProps {
-    message: string;
+    error: Error;
+    reset?: () => void; 
 }
 
-const ErrorMessage = ({ message }: ErrorProps) => {
+const ErrorMessage = ({ error }: ErrorProps) => {
     return (
-        <p>Could not fetch the list of notes. {message}</p>
+        <div className="error-container">
+            <p>Could not fetch the list of notes. {error.message}</p>
+        </div>
     );
 };
 
-export default ErrorMessage
+export default ErrorMessage;
