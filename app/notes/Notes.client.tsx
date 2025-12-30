@@ -3,16 +3,16 @@
 import { useState } from "react";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import { useDebounce } from "use-debounce";
-import { fetchNotes } from "@/app/lib/api";
-import type { FetchNotesResponse } from "@/app/types/note";
-import Modal from "@/app/components/Modal/Modal";
-import NoteForm from "@/app/components/NoteForm/NoteForm";
-import NoteList from "@/app/components/NoteList/NoteList";
-import Pagination from "@/app/components/Pagination/Pagination";
-import SearchBox from "@/app/components/SearchBox/SearchBox";
-import Loader from "@/app/components/Loader/Loader";
-import ErrorMessage from "@/app/components/ErrorMessage/ErrorMessage";
-import EmptyState from "@/app/components/EmptyState/EmptyState";
+import { fetchNotes } from "@/lib/api";
+import type { FetchNotesResponse } from "@/types/note";
+import Modal from "@/components/Modal/Modal";
+import NoteForm from "@/components/NoteForm/NoteForm";
+import NoteList from "@/components/NoteList/NoteList";
+import Pagination from "@/components/Pagination/Pagination";
+import SearchBox from "@/components/SearchBox/SearchBox";
+import Loader from "@/components/Loader/Loader";
+import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
+import EmptyState from "@/components/EmptyState/EmptyState";
 import css from "./Notes.client.module.css";
 
 const NotesClient = () => {

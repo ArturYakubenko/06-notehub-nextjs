@@ -2,8 +2,8 @@
 
 import { useQuery } from "@tanstack/react-query"
 import { useParams } from "next/navigation"
-import {fetchNoteById} from "@/app/lib/api"
-import Loader from "@/app/components/Loader/Loader"; 
+import {fetchNoteById} from "@/lib/api"
+import Loader from "@/components/Loader/Loader"; 
 
 
 const NoteDetailsClient = () => {
