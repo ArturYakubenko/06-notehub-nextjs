@@ -10,9 +10,9 @@ const NoteDetailsClient = () => {
     const {id} = useParams()
     const noteId = Array.isArray(id) ? id[0] : id
 
-    const {data: note, isLoading, isError} = useQuery({
+    const {data: note, isLoading, isError, error} = useQuery({
        queryKey: ["note", noteId],
-        queryFn: () => fetchNoteById(noteId),
+        queryFn: () => fetchNoteById(noteId ?? ""),
         enabled: !!noteId,   
     })
     if(isLoading) {
